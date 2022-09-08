@@ -21,11 +21,8 @@ public class SaleService {
 	public Page<Sale> findSales(String minDate, String maxDate, Pageable pageable) {
 		
 		LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
-		
-		
 		LocalDate min = minDate.equals("") ? today.minusYears(1) : LocalDate.parse(minDate);
 		LocalDate max = maxDate.equals("") ? today : LocalDate.parse(maxDate);
-		
 		
 		return repository.findSales(min, max, pageable);
 	}
